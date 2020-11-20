@@ -44,7 +44,6 @@ export default function MyCard(props: any) {
   const unstated = StoreContainer.useContainer();
   const classes = useStyles();
   const [available, setAvailable] = React.useState<any| IAvailability>({id:"", DATAPAYLOAD:""});
-  // let imageURL: string = './' + props.name + '.jpg';
 
   React.useEffect(() => {
     if (unstated.availabilities) {
@@ -58,6 +57,8 @@ export default function MyCard(props: any) {
 
   return (
     <Card className={classes.root}>
+      
+      {/* Title of the card */}
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>
@@ -67,23 +68,29 @@ export default function MyCard(props: any) {
         title={props.item.type}
         subheader={props.item.price + " €"}
       />
+
+      {/* Image */}
       <CardMedia
         className={classes.media}
-        // image={imageURL}
-        image={`./${props.item.type}.jpg`}
+        image={`./${props.item.type}.jpg`} // named my images this way
         title={props.item.name}
       />
+      
+      {/* content : products */}
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
           color <span style={{ color: `${props.item?.color[0]}`, backgroundColor: `${props.item?.color[0]}`, border: '1px solid grey' }}>color</span>
         </Typography>
           <div style={{fontWeight:"bold", marginTop:"9px" }}>{props.item.name} </div> 
           <div style={{fontWeight:"lighter"}}>from : {props.item.manufacturer} </div> 
+          <div style={{fontWeight:"lighter"}}>type : {props.item.type} </div> 
       </CardContent>
+      
+      {/* Availability */}
       <CardActions disableSpacing>
         {available?.DATAPAYLOAD === undefined ? 
           <div>stock ? wait internet 🚧</div> :
-          <div style={{marginTop:"9px"}}>{available?.DATAPAYLOAD?.includes("OUTOFSTOCK") ? "🔴 out of stock": "🟢  in stock"}</div> 
+          <div style={{marginTop:"9px"}}>{available?.DATAPAYLOAD?.includes("OUTOFSTOCK") ? "🔴  out of stock": "🟢  in stock"}</div> 
         }
       </CardActions>
     </Card>

@@ -102,6 +102,8 @@ export default function NavBar(props: any) {
     <>
       <div className={classes.root}>
         <AppBar position="static">
+          
+          {/* Links - Routing */}
           <Toolbar>
             <Typography className={classes.title} variant="h6" noWrap><Link className="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style={{ color: 'white', textDecoration: 'inherit', paddingLeft: '15px' }} to="/" >My eCommerce</Link></Typography>
             <Typography className={classes.title} variant="h6" noWrap><Link className="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style={{ color: 'white', textDecoration: 'inherit', paddingLeft: '15px' }} to="/jackets">jackets</Link> </Typography>
