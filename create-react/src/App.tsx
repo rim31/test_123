@@ -1,5 +1,4 @@
 import React from "react";
-// import Layout from './components/layout/Layout';
 import NavBar from './components/layout/NavBar';
 import Home from './components/pages/Home';
 import Jackets from './components/pages/Jackets';
@@ -13,10 +12,13 @@ const App: React.FunctionComponent = () => {
     <Router>
       <StoreContainer.Provider>
         <div className="App" style={{ backgroundColor: "whitesmoke", height: '100%' }}>
+          
+          {/* Layout named NavBar */}
           <NavBar>
-          {/* <Layout> */}
             <header className="App-header" style={{ backgroundColor: "#282c34", minHeight: '100vh', color: 'white' }}>
               <div className="container" >
+                
+                {/* Routing */}
                 <Switch>
                   <Route exact path={'/'} component={Home} />
                   <Route exact path={'/jackets'} component={Jackets} />
@@ -26,7 +28,6 @@ const App: React.FunctionComponent = () => {
                 </Switch>
               </div>
             </header>
-          {/* </Layout> */}
           </NavBar>
         </div>
 

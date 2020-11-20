@@ -1,6 +1,5 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-// import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -38,18 +37,17 @@ const useStyles = makeStyles((theme) => ({
 
 interface IAvailability {
   "id": string,
-  "DATAPAYLOAD": string, // "<AVAILABILITY>\n  <INSTOCKVALUE>INSTOCK</INSTOCKVALUE>\n</AVAILABILITY>"
+  "DATAPAYLOAD": string,
 }
 
 export default function MyCard(props: any) {
   const unstated = StoreContainer.useContainer();
   const classes = useStyles();
   const [available, setAvailable] = React.useState<any| IAvailability>({id:"", DATAPAYLOAD:""});
-  let imageURL: string = './' + props.name + '.jpg';
+  // let imageURL: string = './' + props.name + '.jpg';
 
   React.useEffect(() => {
     if (unstated.availabilities) {
-      // let rest: any = Object.values(unstated.availabilities).findIndex((x: any) => x.id === props.item.id);
       let rest: any = (unstated.availabilities).includes((x: any) => x.id === props.item.id.toUpperCase());
       console.log(rest)
       setAvailable(unstated.availabilities[0]);
@@ -71,7 +69,8 @@ export default function MyCard(props: any) {
       />
       <CardMedia
         className={classes.media}
-        image={imageURL}
+        // image={imageURL}
+        image={`./${props.item.type}.jpg`}
         title={props.item.name}
       />
       <CardContent>

@@ -74,6 +74,9 @@ const WhiteTextTypography = withStyles({
   }
 })(Typography);
 
+/**
+ * Footer
+ */
 function Copyright() {
   return (
     <WhiteTextTypography variant="body2" color="textSecondary" align="center" >
@@ -86,6 +89,11 @@ function Copyright() {
   );
 }
 
+/**
+ * Nav Bar - Layout
+ * Search Bar included
+ * @param props : child for layout
+ */
 export default function NavBar(props: any) {
   const classes = useStyles();
   const unstated = StoreContainer.useContainer();
@@ -99,6 +107,8 @@ export default function NavBar(props: any) {
             <Typography className={classes.title} variant="h6" noWrap><Link className="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style={{ color: 'white', textDecoration: 'inherit', paddingLeft: '15px' }} to="/jackets">jackets</Link> </Typography>
             <Typography className={classes.title} variant="h6" noWrap><Link className="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style={{ color: 'white', textDecoration: 'inherit', paddingLeft: '15px' }} to="/shirts" >shirts</Link> </Typography>
             <Typography className={classes.title} variant="h6" noWrap><Link className="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style={{ color: 'white', textDecoration: 'inherit', paddingLeft: '15px' }} to="/accessories" >accessories</Link> </Typography>
+            
+            {/* Search Bar */}
             <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
@@ -116,7 +126,11 @@ export default function NavBar(props: any) {
           </Toolbar>
         </AppBar>
       </div>
+      
+      {/* Component */}
       {props.children}
+
+      {/* Footer */}
       <Box pt={4} style={{ bottom: 0, position: 'fixed', right: 0 }}>
         <Copyright />
       </Box>

@@ -29,6 +29,10 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
+/**
+ * Search Bar function
+ * create a filter on the data including the word searched
+ */
 export default function MySearch() {
   const classes = useStyles();
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { StoreContainer } from '../Store';
-
+import Main from './Main';
 export default function Home() {
   const unstated = StoreContainer.useContainer();
 
@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <div>
       Home
-      {}
+      <Main />
     </div>
   )
 }
