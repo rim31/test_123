@@ -3,7 +3,9 @@
     "clsx",
     "datapayload",
     "exit",
+    "instockvalue",
     "on",
+    "outofstock",
     "unmount"
   ]
 }

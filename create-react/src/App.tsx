@@ -9,8 +9,6 @@ import { StoreContainer } from "./components/Store"
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 const App: React.FunctionComponent = () => {
-
-
   return (
     <Router>
       <StoreContainer.Provider>

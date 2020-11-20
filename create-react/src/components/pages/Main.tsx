@@ -27,7 +27,7 @@ interface IProduct {
   "manufacturer": string
 }
 
-export default function Shirt() {
+export default function Main(props:any) {
   const unstated = StoreContainer.useContainer();
   const pageSize: number = 12;
   const [product, setProduct] = React.useState<IProduct[]>(unstated.shirts)
@@ -75,7 +75,6 @@ export default function Shirt() {
 
       {loading && (<h1>Loading ...</h1>)}
       <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "space-evenly" }}>
-        
         {unstated.shirts &&
           // (product.map((item: IProduct, i: number) =>
           (product

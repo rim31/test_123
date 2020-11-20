@@ -12,7 +12,8 @@ export default function Home() {
   // }, [unstated.accessories, unstated.shirts, unstated.jackets])
 
   React.useEffect(() => {
-    unstated.start();
+    // unstated.start();
+    console.log("loading : ", unstated.loading)
     // eslint-disable-next-line 
   }, [])
   return (

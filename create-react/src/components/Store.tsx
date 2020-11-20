@@ -25,7 +25,6 @@ export const useStore = () => {
   const [shirts, setShirts] = React.useState<IProduct[]>([]);
   const [accessories, setAccessories] = React.useState<IProduct[]>([]);
   const [allProducts, setAllProduct] = React.useState<IProduct[]>([]);
-  const [availability, setAvailability] = React.useState<any>("");
   // const [availabilities, setAvailabilities] = React.useState<IAvailability[]>([]);
   const [availabilities, setAvailabilities] = React.useState<any>([]);
   const [arrayAvailabilities, setArrayAvailabilities] = React.useState<string[]>([]);
@@ -54,6 +53,7 @@ export const useStore = () => {
       console.error(err.message);
     }
   };
+
   // GETTER : function get all questions from the server
   const getAccessories = async () => {
     try {
@@ -65,21 +65,21 @@ export const useStore = () => {
     }
   };
 
-  // GETTER : function get all answers from the server
-  const getAvailability = async (ref: string) => {
-    try {
-      const response = await fetch(`https://bad-api-assignment.reaktor.com/availability/${ref}`);
-      const json = await response.json();
-      setAvailability(json.response);
-    } catch (err) {
-      console.error(err.message);
-    }
-  };
+  // // GETTER : function get all answers from the server
+  // const getAvailability = async (ref: string) => {
+  //   try {
+  //     const response = await fetch(`https://bad-api-assignment.reaktor.com/availability/${ref}`);
+  //     const json = await response.json();
+  //     setAvailability(json.response);
+  //   } catch (err) {
+  //     console.error(err.message);
+  //   }
+  // };
 
   // GETTER : function get all answers from the server
   const getAvailabilities = (myArray: string[]) => {
     try {
-      let res: any= [];
+      let res: any = [];
       myArray.forEach((element: string, i: number) => {
         fetch(`https://bad-api-assignment.reaktor.com/availability/${element}`)
           .then((response: any) => response.json())
@@ -94,53 +94,81 @@ export const useStore = () => {
     }
   };
 
-  const getAvailabilityByItem = async (ref: string, id: string) => {
-    try {
-      return await fetch(`https://bad-api-assignment.reaktor.com/availability/${ref}`)
-        .then((response: any) => response.json())
-        .then((resp: any) => resp.response);
-      // return json.response.filter((i: string) => i === id)
-    } catch (err) {
-      console.error(err.message);
-    }
-  };
+  // const getAvailabilityByItem = async (ref: string, id: string) => {
+  //   try {
+  //     return await fetch(`https://bad-api-assignment.reaktor.com/availability/${ref}`)
+  //       .then((response: any) => response.json())
+  //       .then((resp: any) => resp.response);
+  //     // return json.response.filter((i: string) => i === id)
+  //   } catch (err) {
+  //     console.error(err.message);
+  //   }
+  // };
 
-  const reduceManufacturer = (myArray: any) => {
-    let res: string[] = myArray.map((i: any) => i.manufacturer)
-    // return [... new Set(res)]// typescript config pb es6 :-/
-    return res.filter((x, i, a) => a.indexOf(x) === i)
-  }
+  // const reduceManufacturer = (myArray: any) => {
+  //   let res: string[] = myArray.map((i: any) => i.manufacturer)
+  //   // return [... new Set(res)]// typescript config pb es6 :-/
+  //   return res.filter((x, i, a) => a.indexOf(x) === i)
+  // }
+
+  React.useEffect(() => {
+    setAllProduct(shirts.concat(jackets).concat(accessories))
+  }, [shirts, jackets, accessories])
+
+  React.useEffect(() => {
+    setArrayAvailabilities(
+      allProducts.map(({ manufacturer }) => manufacturer)
+    );
+    // reduceManufacturer
+    setArrayManufacturers(
+      (allProducts.map((i: any) => i.manufacturer))
+        .filter((x, i, a) => a.indexOf(x) === i)
+    )
+  }, [allProducts])
+
+  React.useEffect(() => {
+    setArrayAvailabilities(allProducts.map(({ manufacturer }) => manufacturer))
+  }, [allProducts])
+
+  React.useEffect(() => {
+    setArrayManufacturers(
+      arrayAvailabilities.filter((x, i, a) => a.indexOf(x) === i)
+    )
+  }, [arrayAvailabilities])
+
+  React.useEffect(() => {
+    getAvailabilities(arrayManufacturers);
+  }, [arrayManufacturers])
+
 
   React.useEffect(() => {
     getJackets();
     getShirts();
     getAccessories();
-    setAllProduct(shirts.concat(jackets).concat(accessories))
-    // setArrayAvailabilities([... new Set(allProducts)])
-    setArrayAvailabilities(
-      allProducts.map(({ manufacturer }) => manufacturer)
-    );
-    setArrayManufacturers(
-      ((jackets.concat(accessories).concat(shirts)).map((i: any) => i.manufacturer))
-        .filter((x, i, a) => a.indexOf(x) === i)
-    )
-    getAvailabilities(arrayManufacturers);
-    // eslint-disable-next-line
   }, [])
+
+  React.useEffect(()=>{
+    setLoading(false);
+  },[allProducts, availabilities])
 
   // Load data at beginning
   const start = () => {
-    getJackets();
-    getShirts();
-    getAccessories();
-    setAllProduct(shirts.concat(jackets).concat(accessories))
-    setArrayAvailabilities(
-      allProducts.map(({ manufacturer }) => manufacturer)
-    );
-    setArrayManufacturers(
-      (reduceManufacturer(accessories).map((i: any) => i.manufacturer))
-        .filter((x, i, a) => a.indexOf(x) === i)
-    )
+    // getJackets();
+    // getShirts();
+    // getAccessories();
+    // setAllProduct(shirts.concat(jackets).concat(accessories))
+    // // setArrayAvailabilities([... new Set(allProducts)])
+    // // array of manufacturer only
+    // setArrayAvailabilities(
+    //   allProducts.map(({ manufacturer }) => manufacturer)
+    // );
+    // // Reduce like spread operator of only manufacturer
+    // console.log(reduceManufacturer(arrayAvailabilities));
+    // setArrayManufacturers(
+    //   ((jackets.concat(accessories).concat(shirts)).map((i: any) => i.manufacturer))
+    //     .filter((x, i, a) => a.indexOf(x) === i)
+    // )
+    // getAvailabilities(arrayManufacturers);
   }
 
   return {
@@ -150,37 +178,19 @@ export const useStore = () => {
     jackets,
     shirts,
     accessories,
-    availability,
     availabilities,
     arrayAvailabilities,
     allProducts,
     arrayManufacturers,
     setSearch,
-    getAvailability,
     getShirts,
     getJackets,
     getAccessories,
     setAvailabilities,
     setArrayAvailabilities,
-    getAvailabilityByItem,
     getAvailabilities,
     setLoading,
     start,
   };
 }
 export const StoreContainer = createContainer(useStore)
-
-// Availability
-
-// {
-//   "code": 200,
-//   "response": [
-//       {
-//           "id": "30D2D9F3851621D5A3CD9",
-//           "DATAPAYLOAD": "<AVAILABILITY>\n  <INSTOCKVALUE>INSTOCK</INSTOCKVALUE>\n</AVAILABILITY>"
-//       },
-//       {
-//           "id": "368B8C44A7C9ABF33E1E",
-//           "DATAPAYLOAD": "<AVAILABILITY>\n  <INSTOCKVALUE>INSTOCK</INSTOCKVALUE>\n</AVAILABILITY>"
-//       },
-//       {
