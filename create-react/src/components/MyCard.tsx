@@ -45,6 +45,7 @@ export default function MyCard(props: any) {
   const unstated = StoreContainer.useContainer();
   const classes = useStyles();
   const [available, setAvailable] = React.useState<any| IAvailability>({id:"", DATAPAYLOAD:""});
+  let imageURL: string = './' + props.name + '.jpg';
 
   React.useEffect(() => {
     if (unstated.availabilities) {
@@ -70,7 +71,7 @@ export default function MyCard(props: any) {
       />
       <CardMedia
         className={classes.media}
-        image="/shirt.jpg"
+        image={imageURL}
         title={props.item.name}
       />
       <CardContent>
@@ -81,7 +82,10 @@ export default function MyCard(props: any) {
           <div style={{fontWeight:"lighter"}}>from : {props.item.manufacturer} </div> 
       </CardContent>
       <CardActions disableSpacing>
-          <div style={{marginTop:"9px"}}>{available?.DATAPAYLOAD.includes("OUTOFSTOCK") ? "🔴 out of stock": "🟢  in stock"}</div> 
+        {available?.DATAPAYLOAD === undefined ? 
+          <div>stock ? wait internet 🚧</div> :
+          <div style={{marginTop:"9px"}}>{available?.DATAPAYLOAD?.includes("OUTOFSTOCK") ? "🔴 out of stock": "🟢  in stock"}</div> 
+        }
       </CardActions>
     </Card>
   );

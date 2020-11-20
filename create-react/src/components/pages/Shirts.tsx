@@ -81,7 +81,7 @@ export default function Shirt() {
           (product
             .filter((item: IProduct) => item.name.toLowerCase().includes(unstated.search.toLowerCase()))
             .slice((page - 1) * pageSize, page * pageSize).map((item: IProduct, i: number) =>
-              <MyCard item={item} key={item.id} />
+              <MyCard item={item} key={item.id} name="shirts"/>
             ))
         }
       </div>
