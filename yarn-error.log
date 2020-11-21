@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/Cellar/yarn/1.22.1/libexec/bin/yarn.js add material-ui/lab/Pagination types/material-ui/lab/Pagination
+  /usr/local/bin/node /usr/local/Cellar/yarn/1.22.1/libexec/bin/yarn.js run deploy
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin
@@ -14,25 +14,23 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/material-ui%2flab/Pagination: Request "https://registry.yarnpkg.com/material-ui%2flab/Pagination" returned a 405
-      at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.22.1/libexec/lib/cli.js:66991:18)
-      at Request.self.callback (/usr/local/Cellar/yarn/1.22.1/libexec/lib/cli.js:140743:22)
-      at Request.emit (events.js:311:20)
-      at Request.<anonymous> (/usr/local/Cellar/yarn/1.22.1/libexec/lib/cli.js:141715:10)
-      at Request.emit (events.js:311:20)
-      at IncomingMessage.<anonymous> (/usr/local/Cellar/yarn/1.22.1/libexec/lib/cli.js:141637:12)
-      at Object.onceWrapper (events.js:417:28)
-      at IncomingMessage.emit (events.js:323:22)
-      at endReadableNT (_stream_readable.js:1204:12)
-      at processTicksAndRejections (internal/process/task_queues.js:84:21)
+  SyntaxError: /Users/rims/Documents/reaktor/package.json: Unexpected token } in JSON at position 1167
+      at JSON.parse (<anonymous>)
+      at /usr/local/Cellar/yarn/1.22.1/libexec/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/Cellar/yarn/1.22.1/libexec/lib/cli.js:310:30)
+      at /usr/local/Cellar/yarn/1.22.1/libexec/lib/cli.js:321:13
 
 npm manifest: 
   {
     "name": "my-app",
     "version": "0.1.0",
     "private": true,
+    "homepage": "http://rim31.github.io/test_123",
     "dependencies": {
       "@material-ui/core": "^4.11.0",
+      "@material-ui/icons": "^4.9.1",
+      "@material-ui/lab": "^4.0.0-alpha.56",
       "@testing-library/jest-dom": "^5.11.4",
       "@testing-library/react": "^11.1.0",
       "@testing-library/user-event": "^12.1.10",
@@ -59,7 +57,9 @@ npm manifest:
       "start": "react-scripts start",
       "build": "react-scripts build",
       "test": "react-scripts test",
-      "eject": "react-scripts eject"
+      "eject": "react-scripts eject",
+      "predeploy": "npm run build",
+      "deploy": "gh-pages -d build",
     },
     "eslintConfig": {
       "extends": [
@@ -1388,6 +1388,24 @@ Lockfile:
       prop-types "^15.7.2"
       react-is "^16.8.0"
       react-transition-group "^4.4.0"
+  
+  "@material-ui/icons@^4.9.1":
+    version "4.9.1"
+    resolved "https://registry.yarnpkg.com/@material-ui/icons/-/icons-4.9.1.tgz#fdeadf8cb3d89208945b33dbc50c7c616d0bd665"
+    integrity sha512-GBitL3oBWO0hzBhvA9KxqcowRUsA0qzwKkURyC8nppnC3fw54KPKZ+d4V1Eeg/UnDRSzDaI9nGCdel/eh9AQMg==
+    dependencies:
+      "@babel/runtime" "^7.4.4"
+  
+  "@material-ui/lab@^4.0.0-alpha.56":
+    version "4.0.0-alpha.56"
+    resolved "https://registry.yarnpkg.com/@material-ui/lab/-/lab-4.0.0-alpha.56.tgz#ff63080949b55b40625e056bbda05e130d216d34"
+    integrity sha512-xPlkK+z/6y/24ka4gVJgwPfoCF4RCh8dXb1BNE7MtF9bXEBLN/lBxNTK8VAa0qm3V2oinA6xtUIdcRh0aeRtVw==
+    dependencies:
+      "@babel/runtime" "^7.4.4"
+      "@material-ui/utils" "^4.10.2"
+      clsx "^1.0.4"
+      prop-types "^15.7.2"
+      react-is "^16.8.0"
   
   "@material-ui/styles@^4.10.0":
     version "4.10.0"
