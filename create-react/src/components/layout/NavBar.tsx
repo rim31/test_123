@@ -102,14 +102,14 @@ export default function NavBar(props: any) {
     <>
       <div className={classes.root}>
         <AppBar position="static">
-          
+
           {/* Links - Routing */}
           <Toolbar>
-            <Typography className={classes.title} variant="h6" noWrap><Link className="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style={{ color: 'white', textDecoration: 'inherit', paddingLeft: '15px' }} to="/" >My eCommerce</Link></Typography>
+            <Typography className={classes.title} variant="h6" noWrap><Link className="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style={{ color: 'white', textDecoration: 'inherit', paddingLeft: '15px' }} to="/" >My eCommerce <img src='./favicon.ico' alt='logo' style={{ height: "1.2em" }} /></Link></Typography>
             <Typography className={classes.title} variant="h6" noWrap><Link className="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style={{ color: 'white', textDecoration: 'inherit', paddingLeft: '15px' }} to="/jackets">jackets</Link> </Typography>
             <Typography className={classes.title} variant="h6" noWrap><Link className="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style={{ color: 'white', textDecoration: 'inherit', paddingLeft: '15px' }} to="/shirts" >shirts</Link> </Typography>
             <Typography className={classes.title} variant="h6" noWrap><Link className="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style={{ color: 'white', textDecoration: 'inherit', paddingLeft: '15px' }} to="/accessories" >accessories</Link> </Typography>
-            
+
             {/* Search Bar */}
             <div className={classes.search}>
               <div className={classes.searchIcon}>
@@ -122,13 +122,13 @@ export default function NavBar(props: any) {
                   input: classes.inputInput,
                 }}
                 inputProps={{ 'aria-label': 'search' }}
-                onChange={(e: any) => unstated.setSearch(e.target.value) }
+                onChange={(e: any) => unstated.setSearch(e.target.value)}
               />
             </div>
           </Toolbar>
         </AppBar>
       </div>
-      
+
       {/* Component */}
       {props.children}
 

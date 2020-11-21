@@ -1,6 +1,5 @@
 import React from 'react'
 import { StoreContainer } from '../Store';
-// import Main from './Main';
 import { Link } from 'react-router-dom';
 
 export default function Home() {
@@ -14,6 +13,7 @@ export default function Home() {
   return (
     <div>
 
+    {/* Header - cover */}
       <section className="showcase">
         <img src="./cover.jpg" alt="cover shop" />
         <div className="overlay">
@@ -26,6 +26,7 @@ export default function Home() {
 
       {unstated.loading && (<h1>Loading ...</h1>)}
 
+    {/* Route - articles */}
       <div className="flex">
         <Link to='/jackets'>
           <figure className="photo red">

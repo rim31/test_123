@@ -4,6 +4,7 @@
     "datapayload",
     "exit",
     "instockvalue",
+    "mixins",
     "on",
     "outofstock",
     "unmount"
