@@ -105,10 +105,10 @@ export default function NavBar(props: any) {
 
           {/* Links - Routing */}
           <Toolbar>
-            <Typography className={classes.title} variant="h6" noWrap><Link className="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style={{ color: 'white', textDecoration: 'inherit', paddingLeft: '15px' }} to="/" >My eCommerce <img src='./test_123/favicon.ico' alt='logo' style={{ height: "1.2em" }} /></Link></Typography>
-            <Typography className={classes.title} variant="h6" noWrap><Link className="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style={{ color: 'white', textDecoration: 'inherit', paddingLeft: '15px' }} to="/jackets">jackets</Link> </Typography>
-            <Typography className={classes.title} variant="h6" noWrap><Link className="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style={{ color: 'white', textDecoration: 'inherit', paddingLeft: '15px' }} to="/shirts" >shirts</Link> </Typography>
-            <Typography className={classes.title} variant="h6" noWrap><Link className="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style={{ color: 'white', textDecoration: 'inherit', paddingLeft: '15px' }} to="/accessories" >accessories</Link> </Typography>
+            <Typography className={classes.title} variant="h6" noWrap><Link className="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style={{ color: 'white', textDecoration: 'inherit', paddingLeft: '15px' }} to="/test_123/" >My eCommerce <img src='./test_123/favicon.ico' alt='logo' style={{ height: "1.2em" }} /></Link></Typography>
+            <Typography className={classes.title} variant="h6" noWrap><Link className="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style={{ color: 'white', textDecoration: 'inherit', paddingLeft: '15px' }} to="/test_123/jackets">jackets</Link> </Typography>
+            <Typography className={classes.title} variant="h6" noWrap><Link className="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style={{ color: 'white', textDecoration: 'inherit', paddingLeft: '15px' }} to="/test_123/shirts" >shirts</Link> </Typography>
+            <Typography className={classes.title} variant="h6" noWrap><Link className="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" style={{ color: 'white', textDecoration: 'inherit', paddingLeft: '15px' }} to="/test_123/accessories" >accessories</Link> </Typography>
 
             {/* Search Bar */}
             <div className={classes.search}>

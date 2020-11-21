@@ -28,7 +28,7 @@ export default function Home() {
 
     {/* Route - articles - url Prod (/test_123)  */}
       <div className="flex">
-        <Link to='/jackets'>
+        <Link to='/test_123/jackets'>
           <figure className="photo red">
             <img src="./test_123/jackets.jpg" alt="jackets" />
             <figcaption>
@@ -36,7 +36,7 @@ export default function Home() {
             </figcaption>
           </figure>
         </Link>
-        <Link to='/shirts'>
+        <Link to='/test_123/shirts'>
           <figure className="photo blue">
             <img src="./test_123/shirts.jpg" alt="shirt" />
             <figcaption>
@@ -44,7 +44,7 @@ export default function Home() {
             </figcaption>
           </figure>
         </Link>
-        <Link to='/accessories'>
+        <Link to='/test_123/accessories'>
           <figure className="photo">
             <img src="./test_123/accessories.jpg" alt="accessories" />
             <figcaption>
