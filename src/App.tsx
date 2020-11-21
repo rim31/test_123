@@ -19,11 +19,15 @@ const App: React.FunctionComponent = () => {
             <header className="App-header" style={{ backgroundColor: "#282c34", minHeight: '100vh', color: 'white' }}>
               <div className="container" >
 
-                {/* Routing */}
+                {/* Routing - Includes routes dev & prod (test_123) */}
                 <Switch>
+                  <Route exact path={'/test_123/'} component={Home} />
                   <Route exact path={'/'} component={Home} />
+                  <Route exact path={'/test_123/jackets'} component={Jackets} />
                   <Route exact path={'/jackets'} component={Jackets} />
+                  <Route exact path={'/test_123/shirts'} component={Shirts} />
                   <Route exact path={'/shirts'} component={Shirts} />
+                  <Route exact path={'/test_123/accessories'} component={Accessories} />
                   <Route exact path={'/accessories'} component={Accessories} />
                   <Route path={'*'} ><NotFound /></Route>
                 </Switch>

@@ -72,7 +72,7 @@ export default function MyCard(props: any) {
       {/* Image */}
       <CardMedia
         className={classes.media}
-        image={`./${props.item.type}.jpg`} // named my images this way
+        image={`./test_123/${props.item.type}.jpg`} // named my images this way - url Prod(/test_123)
         title={props.item.name}
       />
       
