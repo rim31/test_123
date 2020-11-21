@@ -66,7 +66,7 @@ export default function Shirt() {
       <h1 style={{ textAlign: "center" }}>Shirt</h1>
       <div className={classes.root}
       >
-        <div style={{ justifyContent: "center" }}>
+        <div className="Pagination-header">
           <Pagination count={Math.ceil(totalPages / pageSize)} color="primary" shape="rounded"
             onChange={(e: object, page: number) => setPage(page)}
           />

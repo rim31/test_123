@@ -66,7 +66,7 @@ export default function Accessories() {
       <h1 style={{ textAlign: "center" }}>Accessories</h1>
       <div className={classes.root}
       >
-        <div style={{ justifyContent: "center" }}>
+        <div className="Pagination-header">
           <Pagination count={Math.ceil(totalPages / pageSize)} color="primary" shape="rounded"
             onChange={(e: object, page: number) => setPage(page)}
           />
@@ -75,12 +75,12 @@ export default function Accessories() {
 
       {loading && (<h1>Loading ...</h1>)}
       <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "space-evenly" }}>
-        
+
         {unstated.accessories &&
           (product
             .filter((item: IProduct) => item.name.toLowerCase().includes(unstated.search.toLowerCase()))
             .slice((page - 1) * pageSize, page * pageSize).map((item: IProduct, i: number) =>
-              <MyCard item={item} key={item.id} name="accessories"/>
+              <MyCard item={item} key={item.id} name="accessories" />
             ))
         }
       </div>

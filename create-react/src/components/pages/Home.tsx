@@ -33,21 +33,21 @@ export default function Home() {
   const unstated = StoreContainer.useContainer();
   const classes = useStyles();
 
-  // React.useEffect(() => {
-  //   console.log("unstated acc", unstated.accessories)
-  //   console.log("unstated shi", unstated.shirts)
-  //   console.log("unstated jac", unstated.jackets)
-  //   // eslint-disable-next-line 
-  // }, [unstated.accessories, unstated.shirts, unstated.jackets])
-
   React.useEffect(() => {
-    // unstated.start();
     console.log("loading : ", unstated.loading)
     // eslint-disable-next-line 
   }, [])
+
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>WELCOME</h1>
+      
+      <div className="jumbotron">
+        <div className="myContainer">
+          <h1>Jumbotron</h1>
+        </div>
+      </div>
+
       {unstated.loading && (<h1>Loading ...</h1>)}
       <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "space-evenly" }}>
 

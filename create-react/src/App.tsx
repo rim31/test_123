@@ -6,18 +6,19 @@ import Accessories from './components/pages/Accessories';
 import Shirts from './components/pages/Shirts';
 import { StoreContainer } from "./components/Store"
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+// import './App.css';
 
 const App: React.FunctionComponent = () => {
   return (
     <Router>
       <StoreContainer.Provider>
         <div className="App" style={{ backgroundColor: "whitesmoke", height: '100%' }}>
-          
+
           {/* Layout named NavBar */}
           <NavBar>
             <header className="App-header" style={{ backgroundColor: "#282c34", minHeight: '100vh', color: 'white' }}>
               <div className="container" >
-                
+
                 {/* Routing */}
                 <Switch>
                   <Route exact path={'/'} component={Home} />
