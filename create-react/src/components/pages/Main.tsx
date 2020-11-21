@@ -28,7 +28,7 @@ interface IProduct {
 }
 
 /**
- * Display All products 
+ * Display All products - not in the subject
  */
 export default function Main() {
   const unstated = StoreContainer.useContainer();

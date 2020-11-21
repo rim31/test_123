@@ -1,37 +1,10 @@
 import React from 'react'
 import { StoreContainer } from '../Store';
 // import Main from './Main';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
 import { Link } from 'react-router-dom';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    maxWidth: 345,
-    minWidth: 245,
-    marginTop: 15,
-  },
-  media: {
-    height: 0,
-    paddingTop: '56.25%', // 16:9
-  },
-  expand: {
-    transform: 'rotate(0deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
-  expandOpen: {
-    transform: 'rotate(180deg)',
-  },
-}));
 
 export default function Home() {
   const unstated = StoreContainer.useContainer();
-  const classes = useStyles();
 
   React.useEffect(() => {
     console.log("loading : ", unstated.loading)
@@ -40,43 +13,46 @@ export default function Home() {
 
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>WELCOME</h1>
-      
-      <div className="jumbotron">
-        <div className="myContainer">
-          <h1>Jumbotron</h1>
+
+      <section className="showcase">
+        <img src="./cover.jpg" alt="cover shop" />
+        <div className="overlay">
+          <h2>WELCOME</h2>
+          <p>
+            My e-commerce , simply visit and check different articles
+            </p>
         </div>
-      </div>
+      </section>
 
       {unstated.loading && (<h1>Loading ...</h1>)}
-      <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "space-evenly" }}>
 
+      <div className="flex">
         <Link to='/jackets'>
-          <Card className={classes.root}>
-            <CardMedia className={classes.media} image={`./jackets.jpg`} title="jackets" />
-            <CardContent>
-              <div style={{ fontWeight: "bold", textAlign: "center" }}>Jackets </div>
-            </CardContent>
-          </Card>
+          <figure className="photo red">
+            <img src="./jackets.jpg" alt="jackets" />
+            <figcaption>
+              <h2>Your  <span> Jackets</span></h2>
+            </figcaption>
+          </figure>
         </Link>
         <Link to='/shirts'>
-          <Card className={classes.root}>
-            <CardMedia className={classes.media} image={`./shirts.jpg`} title="shirts" />
-            <CardContent>
-              <div style={{ fontWeight: "bold", textAlign: "center" }}>Shirts </div>
-            </CardContent>
-          </Card>
+          <figure className="photo blue">
+            <img src="./shirts.jpg" alt="shirt" />
+            <figcaption>
+              <h2>Your  <span> Shirts</span></h2>
+            </figcaption>
+          </figure>
         </Link>
         <Link to='/accessories'>
-          <Card className={classes.root}>
-            <CardMedia className={classes.media} image={`./accessories.jpg`} title="accessories" />
-            <CardContent>
-              <div style={{ fontWeight: "bold", textAlign: "center" }}>Accessories </div>
-            </CardContent>
-          </Card>
+          <figure className="photo">
+            <img src="./accessories.jpg" alt="accessories" />
+            <figcaption>
+              <h2>Your <span> Accessories</span></h2>
+            </figcaption>
+          </figure>
         </Link>
-
       </div>
+
     </div>
   )
 }

@@ -50,6 +50,7 @@ export default function Shirt() {
       .length / pageSize));
   }, [unstated.search, product])
 
+  // update if necessary
   React.useEffect(() => {
     setLoading(true);
     if (unstated.shirts !== product) {
@@ -63,25 +64,29 @@ export default function Shirt() {
 
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>Shirt</h1>
-      <div className={classes.root}
-      >
+      
+      {/* Header */}
+      <div className="Pagination-header">
+        <h1>Jackets</h1>
+      </div>
+
+      {/* Pagination */}
+      <div className={classes.root}>
         <div className="Pagination-header">
           <Pagination count={Math.ceil(totalPages / pageSize)} color="primary" shape="rounded"
-            onChange={(e: object, page: number) => setPage(page)}
-          />
+            onChange={(e: object, page: number) => setPage(page)} />
         </div>
       </div>
 
       {loading && (<h1>Loading ...</h1>)}
       <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "space-evenly" }}>
-        
+
+        {/* Articles - mapping - filter */}
         {unstated.shirts &&
-          // (product.map((item: IProduct, i: number) =>
           (product
             .filter((item: IProduct) => item.name.toLowerCase().includes(unstated.search.toLowerCase()))
             .slice((page - 1) * pageSize, page * pageSize).map((item: IProduct, i: number) =>
-              <MyCard item={item} key={item.id} name="shirts"/>
+              <MyCard item={item} key={item.id} name="shirts" />
             ))
         }
       </div>

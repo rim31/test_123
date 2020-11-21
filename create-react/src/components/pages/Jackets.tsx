@@ -27,6 +27,7 @@ interface IProduct {
   "manufacturer": string
 }
 
+
 export default function Jackets() {
   const unstated = StoreContainer.useContainer();
   const pageSize: number = 12;
@@ -44,12 +45,14 @@ export default function Jackets() {
     // eslint-disable-next-line
   }, [])
 
+  // Search 
   React.useEffect(() => {
     setTotalPages(Math.ceil(product
       .filter((item: IProduct) => item.name.toLowerCase().includes(unstated.search.toLowerCase()))
       .length / pageSize));
   }, [unstated.search, product])
 
+  // update if necessary
   React.useEffect(() => {
     setLoading(true);
     if (unstated.jackets !== product) {
@@ -63,19 +66,24 @@ export default function Jackets() {
 
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>Jackets</h1>
-      <div className={classes.root}
-      >
+
+      {/* Header */}
+      <div className="Pagination-header">
+        <h1>Jackets</h1>
+      </div>
+      
+      {/* Pagination */}
+      <div className={classes.root}>
         <div className="Pagination-header">
           <Pagination count={Math.ceil(totalPages / pageSize)} color="primary" shape="rounded"
-            onChange={(e: object, page: number) => setPage(page)}
-          />
+            onChange={(e: object, page: number) => setPage(page)}/>
         </div>
       </div>
 
       {loading && (<h1>Loading ...</h1>)}
       <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "space-evenly" }}>
 
+        {/* Articles - mapping - filter */}
         {unstated.jackets &&
           (product
             .filter((item: IProduct) => item.name.toLowerCase().includes(unstated.search.toLowerCase()))

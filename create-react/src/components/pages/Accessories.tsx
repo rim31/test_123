@@ -44,12 +44,14 @@ export default function Accessories() {
     // eslint-disable-next-line
   }, [])
 
+  // Search 
   React.useEffect(() => {
     setTotalPages(Math.ceil(product
       .filter((item: IProduct) => item.name.toLowerCase().includes(unstated.search.toLowerCase()))
       .length / pageSize));
   }, [unstated.search, product])
 
+  // update if necessary
   React.useEffect(() => {
     setLoading(true);
     if (unstated.accessories !== product) {
@@ -63,19 +65,24 @@ export default function Accessories() {
 
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>Accessories</h1>
-      <div className={classes.root}
-      >
+      
+      {/* Header */}
+      <div className="Pagination-header">
+        <h1>Accessories</h1>
+      </div>
+
+      {/* Pagination */}
+      <div className={classes.root}>
         <div className="Pagination-header">
           <Pagination count={Math.ceil(totalPages / pageSize)} color="primary" shape="rounded"
-            onChange={(e: object, page: number) => setPage(page)}
-          />
+            onChange={(e: object, page: number) => setPage(page)}/>
         </div>
       </div>
 
       {loading && (<h1>Loading ...</h1>)}
       <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "space-evenly" }}>
 
+        {/* Articles - mapping - filter */}
         {unstated.accessories &&
           (product
             .filter((item: IProduct) => item.name.toLowerCase().includes(unstated.search.toLowerCase()))
