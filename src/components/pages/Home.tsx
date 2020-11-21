@@ -13,9 +13,9 @@ export default function Home() {
   return (
     <div>
 
-    {/* Header - url prod : /test_123/ */}
+      {/* Header - url prod : /test_123/ */}
       <section className="showcase">
-        <img src="./test_123/cover.jpg" alt="test_123/ shop" />
+        <img src=".//cover.jpg" alt="test_123/ shop" />
         <div className="overlay">
           <h2>WELCOME</h2>
           <p>
@@ -26,11 +26,11 @@ export default function Home() {
 
       {unstated.loading && (<h1>Loading ...</h1>)}
 
-    {/* Route - articles - url Prod (/test_123)  */}
+      {/* Route - articles - url Prod (/test_123)  */}
       <div className="flex">
         <Link to='/test_123/jackets'>
           <figure className="photo red">
-            <img src="./test_123/jackets.jpg" alt="jackets" />
+            <img src=".//jackets.jpg" alt="jackets" />
             <figcaption>
               <h2>Your  <span> Jackets</span></h2>
             </figcaption>
@@ -38,7 +38,7 @@ export default function Home() {
         </Link>
         <Link to='/test_123/shirts'>
           <figure className="photo blue">
-            <img src="./test_123/shirts.jpg" alt="shirt" />
+            <img src=".//shirts.jpg" alt="shirt" />
             <figcaption>
               <h2>Your  <span> Shirts</span></h2>
             </figcaption>
@@ -46,7 +46,7 @@ export default function Home() {
         </Link>
         <Link to='/test_123/accessories'>
           <figure className="photo">
-            <img src="./test_123/accessories.jpg" alt="accessories" />
+            <img src=".//accessories.jpg" alt="accessories" />
             <figcaption>
               <h2>Your <span> Accessories</span></h2>
             </figcaption>
