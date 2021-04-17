@@ -5,17 +5,17 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Avatar from '@material-ui/core/Avatar';
-// import CardActions from '@material-ui/core/CardActions';
-// import Typography from '@material-ui/core/Typography';
+import { Link } from 'react-router-dom'
 import { red } from '@material-ui/core/colors';
 import { StoreContainer } from '../Store';
 import { IMovie } from '../../utils';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 345,
-    minWidth: 245,
-    marginTop: 15,
+    maxWidth: '100%',
+    minWidth: '100%',
+    backgroundColor: "black",
+    color: "whitesmoke",
   },
   media: {
     height: 0,
@@ -44,20 +44,16 @@ export default function Details(props: any) {
   const { id } = props.match.params;
 
   React.useEffect(() => {
-    setItem(unstated.movies.filter(i => String(i.id) === id));
-    console.log(`item`, item, unstated.movies, id, typeof (id), unstated.movies.filter(i => i.id === id))
-    // eslint-disable-next-line 
-    unstated.movies.map(i => {
-      console.log(`i.id`, i.id)
-      if (String(i.id) === id) {
-        console.log(`===> i`, i)
-        setItem(i);
-      }
-    })
+    setItem(unstated.movies.filter((i) => String(i.id) === id)[0]);
     // eslint-disable-next-line 
   }, [id, unstated.movies])
   return (
     <Card className={classes.root}>
+      <div className="Pagination-header">
+        <Link to={{ pathname: `/movies` }} style={{ textDecoration: 'none' }}>
+          <h1>Movies</h1>
+        </Link>
+      </div>
 
       {item &&
         (
@@ -78,8 +74,20 @@ export default function Details(props: any) {
 
             <CardContent>
               <div style={{ fontWeight: "bold", marginTop: "9px" }}>{item.title} </div>
-              <div style={{ fontWeight: "lighter" }}>popularity : {item.popularity} </div>
-              <div style={{ fontWeight: "lighter" }}>vote : {item.vote_average} </div>
+              <div>popularity : {item.popularity} </div>
+              <div>vote average : {item.vote_average} </div>
+              <div>adult : {item.adult}</div>
+              <div>genre ids : {item.genre_ids}</div>
+              <div>id : {item.id}</div>
+              <div>original language : {item.original_language}</div>
+              <div>original title : {item.original_title}</div>
+              <div>overview : {item.overview}</div>
+              <div>popularity : {item.popularity}</div>
+              <div>release date : {item.release_date}</div>
+              <div>title : {item.title}</div>
+              <div>video : {item.video}</div>
+              <div>vote average : {item.vote_average}</div>
+              <div>vote count : {item.vote_count}</div>
             </CardContent>
           </>)}
 

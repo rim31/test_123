@@ -4,11 +4,8 @@ import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
-// import CardActions from '@material-ui/core/CardActions';
 import Avatar from '@material-ui/core/Avatar';
-// import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
-import { StoreContainer } from '../Store';
 import { IMovie } from '../../utils';
 
 const useStyles = makeStyles((theme) => ({
@@ -38,14 +35,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function MyCard(props: { item: IMovie }) {
-  const unstated = StoreContainer.useContainer();
   const classes = useStyles();
 
-
-  React.useEffect(() => {
-    console.log(`unstated.movies`, unstated.movies);
-    // eslint-disable-next-line 
-  }, [])
   return (
     <Card className={classes.root}>
 

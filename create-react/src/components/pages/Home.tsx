@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <div>
 
-    {/* Header - cover */}
+      {/* Header - cover */}
       <section className="showcase">
         <img src="./cover.jpg" alt="cover shop" />
         <div className="overlay">
@@ -26,13 +26,13 @@ export default function Home() {
 
       {unstated.loading && (<h1>Loading ...</h1>)}
 
-    {/* Route - articles */}
+      {/* Route - articles */}
       <div className="flex">
         <Link to='/movies'>
           <figure className="photo red">
             <img src="./jackets.jpg" alt="jackets" />
             <figcaption>
-              <h2>Your  <span> movies</span></h2>
+              <h2>Favorite  <span> movies</span></h2>
             </figcaption>
           </figure>
         </Link>
