@@ -8,7 +8,7 @@ import Avatar from '@material-ui/core/Avatar';
 import { Link } from 'react-router-dom'
 import { red } from '@material-ui/core/colors';
 import { StoreContainer } from '../Store';
-import { IMovie, IFilm } from '../../utils';
+import { IFilm } from '../../utils';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,14 +40,9 @@ const useStyles = makeStyles((theme) => ({
 export default function Details(props: any) {
   const unstated = StoreContainer.useContainer();
   const classes = useStyles();
-  const [item, setItem] = React.useState<IMovie | IFilm | any>("");
+  const [item, setItem] = React.useState<IFilm | any>("");
   const [loading, setLoading] = React.useState<boolean>(true)
   const { id } = props.match.params;
-
-  // React.useEffect(() => {
-  //   setItem(unstated.movies.filter((i) => String(i.id) === id)[0]);
-  //   // eslint-disable-next-line 
-  // }, [id, unstated.movies])
 
   React.useEffect(() => {
     if (unstated.film) {

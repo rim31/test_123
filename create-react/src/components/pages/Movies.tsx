@@ -33,7 +33,8 @@ export default function Movies(props: any) {
   const [product, setProduct] = React.useState<any[]>(unstated.movies)
   const [loading, setLoading] = React.useState<boolean>(unstated.loading)
   const { width } = props;
-  let columns = width === 'xs' || width === 'sm' ? 1 : 3;
+  let columns = width === 'xs' || width === 'sm' ? 1 : 2;
+
   const classes = useStyles();
 
   // update if necessary
