@@ -17,25 +17,51 @@ export interface IMovie {
   "vote_average": any,
   "vote_count": Number
 }
-// https://api.themoviedb.org/3/movie/popular?api_key=8cfaa9c2cd892c338c650dbcf1149226
-// result: [
-//     {
-//       "adult": false,
-//       "backdrop_path": "/inJjDhCjfhh3RtrJWBmmDqeuSYC.jpg",
-//       "genre_ids": [
-//           28,
-//           878
-//       ],
-//       "id": 399566,
-//       "original_language": "en",
-//       "original_title": "Godzilla vs. Kong",
-//       "overview": "In a time when monsters walk the Earth, humanity’s fight for its future sets Godzilla and Kong on a collision course that will see the two most powerful forces of nature on the planet collide in a spectacular battle for the ages.",
-//       "popularity": 5405.33,
-//       "poster_path": "/pgqgaUx1cJb5oZQQ5v0tNARCeBp.jpg",
-//       "release_date": "2021-03-24",
-//       "title": "Godzilla vs. Kong",
-//       "video": false,
-//       "vote_average": 8.3,
-//       "vote_count": 4497
-//   },
-// ]
+
+interface IGenre {
+  "id": number,
+  "name": string
+}
+interface ICompany {
+  "id": number,
+  "logo_path": any,
+  "name": string,
+  "origin_country": string
+}
+interface ICountry {
+  "iso_3166_1": string,
+  "name": string
+}
+interface ILanguages {
+  "english_name": string,
+  "iso_639_1": string,
+  "name": string
+}
+
+export interface IFilm {
+  "adult": Boolean,
+  "backdrop_path": string,
+  "belongs_to_collection": any,
+  "budget": number,
+  "genres": IGenre[],
+  "homepage": string,
+  "id": number,
+  "imdb_id": string,
+  "original_language": string,
+  "original_title": string,
+  "overview": string,
+  "popularity": any,
+  "poster_path": string,
+  "production_companies": ICompany[],
+  "production_countries": ICountry[],
+  "release_date": "2019-09-17",
+  "revenue": number,
+  "runtime": number,
+  "spoken_languages": ILanguages[],
+  "status": string,
+  "tagline": string,
+  "title": string,
+  "video": boolean,
+  "vote_average": any,
+  "vote_count": number
+}

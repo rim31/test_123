@@ -28,10 +28,12 @@ const useStyles = makeStyles((theme) =>
 );
 
 
-export default function Movies() {
+export default function Movies(props: any) {
   const unstated = StoreContainer.useContainer();
   const [product, setProduct] = React.useState<any[]>(unstated.movies)
   const [loading, setLoading] = React.useState<boolean>(unstated.loading)
+  const { width } = props;
+  let columns = width === 'xs' || width === 'sm' ? 1 : 3;
   const classes = useStyles();
 
   // update if necessary
@@ -59,7 +61,7 @@ export default function Movies() {
       <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "space-evenly" }}>
 
         <div className={classes.root}>
-          <GridList cellHeight={180} className={classes.gridList} cols={3}>
+          <GridList cellHeight={180} className={classes.gridList} cols={columns}>
             {unstated.movies &&
               (product
                 .filter((item: IMovie) => item.title.toLowerCase().includes(unstated.search.toLowerCase()))

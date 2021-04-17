@@ -8,7 +8,7 @@ import Avatar from '@material-ui/core/Avatar';
 import { Link } from 'react-router-dom'
 import { red } from '@material-ui/core/colors';
 import { StoreContainer } from '../Store';
-import { IMovie } from '../../utils';
+import { IMovie, IFilm } from '../../utils';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,13 +40,34 @@ const useStyles = makeStyles((theme) => ({
 export default function Details(props: any) {
   const unstated = StoreContainer.useContainer();
   const classes = useStyles();
-  const [item, setItem] = React.useState<IMovie | any>("");
+  const [item, setItem] = React.useState<IMovie | IFilm | any>("");
+  const [loading, setLoading] = React.useState<boolean>(true)
   const { id } = props.match.params;
 
+  // React.useEffect(() => {
+  //   setItem(unstated.movies.filter((i) => String(i.id) === id)[0]);
+  //   // eslint-disable-next-line 
+  // }, [id, unstated.movies])
+
   React.useEffect(() => {
-    setItem(unstated.movies.filter((i) => String(i.id) === id)[0]);
-    // eslint-disable-next-line 
-  }, [id, unstated.movies])
+    if (unstated.film) {
+      setItem(unstated.film);
+      console.log(`unstated.movie`, unstated.film)
+    }
+    // eslint-disable-next-line
+  }, [])
+
+  React.useEffect(() => {
+    try {
+      fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=8cfaa9c2cd892c338c650dbcf1149226`)
+        .then(response => response.json()).then((res) => setItem(res));
+    } catch (err) {
+      console.error(err.message);
+    }
+    setLoading(false);
+    // eslint-disable-next-line
+  }, [])
+
   return (
     <Card className={classes.root}>
       <div className="Pagination-header">
@@ -54,6 +75,8 @@ export default function Details(props: any) {
           <h1>Movies</h1>
         </Link>
       </div>
+
+      {loading && (<><h1>Loading</h1></>)}
 
       {item &&
         (
