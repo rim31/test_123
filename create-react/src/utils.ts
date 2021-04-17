@@ -1,18 +1,18 @@
 export interface IMovie {
   "adult": Boolean,
-  "backdrop_path": String,
+  "backdrop_path": string,
   "genre_ids": [
     Number,
     Number
   ],
   "id": Number,
-  "original_language": String,
-  "original_title": String,
-  "overview": String,
+  "original_language": string,
+  "original_title": string,
+  "overview": string,
   "popularity": any,
-  "poster_path": String,
-  "release_date": String,
-  "title": String,
+  "poster_path": string,
+  "release_date": string,
+  "title": string,
   "video": Boolean,
   "vote_average": any,
   "vote_count": Number
