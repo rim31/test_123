@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) =>
       backgroundColor: theme.palette.background.paper,
     },
     gridList: {
-      width: '100%',
+      width: 'auto',
       height: '100%',
     },
     icon: {
@@ -32,8 +32,21 @@ export default function Movies(props: any) {
   const unstated = StoreContainer.useContainer();
   const [product, setProduct] = React.useState<any[]>(unstated.movies)
   const [loading, setLoading] = React.useState<boolean>(unstated.loading)
-  const { width } = props;
-  let columns = width === 'xs' || width === 'sm' ? 1 : 2;
+  const [width, setWidth] = React.useState<number>(window.innerWidth);
+
+  // To determine if the browser width for responsive
+  const handleWindowSizeChange = () => {
+    setWidth(window.innerWidth);
+  }
+  React.useEffect(() => {
+    window.addEventListener('resize', handleWindowSizeChange);
+    return () => {
+      window.removeEventListener('resize', handleWindowSizeChange);
+    }
+  }, []);
+
+  // to use in  GridList 
+  let isMobile: boolean = (width <= 768);
 
   const classes = useStyles();
 
@@ -55,24 +68,27 @@ export default function Movies(props: any) {
       {/* Header */}
       <div className="Pagination-header">
         <h1>Movies</h1>
+        {/* number of movies */}
         <div>{unstated.movies.length} films</div>
       </div>
 
+      {/* Loading */}
       {loading && (<h1>Loading ...</h1>)}
       <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "space-evenly" }}>
 
         <div className={classes.root}>
-          <GridList cellHeight={180} className={classes.gridList} cols={columns}>
+          {/* grid of movies */}
+          <GridList cellHeight={180} className={classes.gridList} cols={isMobile ? 1 : 3}>
             {unstated.movies &&
               (product
                 .filter((item: IMovie) => item.title.toLowerCase().includes(unstated.search.toLowerCase()))
                 .map((tile: IMovie, i: number) =>
 
+                  // card of movie
                   <GridListTile key={i + "tile.title"}>
-                    <Link
-                      to={{
-                        pathname: `/details/${tile.id}`
-                      }}>
+
+                    {/* redireect to Details Component */}
+                    <Link to={{ pathname: `/details/${tile.id}` }}>
 
                       <img src={`https://image.tmdb.org/t/p/w500/${tile.poster_path}`} alt={tile.title} />
                       <GridListTileBar
