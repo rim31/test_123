@@ -1,8 +1,9 @@
 import React from 'react'
 import { StoreContainer } from '../Store';
-import MyCard from '../MyCard';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 import Pagination from '@material-ui/lab/Pagination';
+import { IMovie } from '../../utils';
+import MyCard from '../pages/MyCard';
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -18,50 +19,37 @@ const useStyles = makeStyles((theme) =>
   }),
 );
 
-interface IProduct {
-  "id": string,
-  "type": string,
-  "name": string,
-  "color": string[],
-  "price": number,
-  "manufacturer": string
-}
 
-
-export default function Jackets() {
+export default function Movies() {
   const unstated = StoreContainer.useContainer();
   const pageSize: number = 12;
-  const [product, setProduct] = React.useState<IProduct[]>(unstated.jackets)
-  const [totalPages, setTotalPages] = React.useState<number>(unstated.jackets.length)
+  const [product, setProduct] = React.useState<any[]>(unstated.movies)
+  const [totalPages, setTotalPages] = React.useState<number>(unstated.movies.length)
   const [page, setPage] = React.useState<number>(1)
   const [loading, setLoading] = React.useState<boolean>(unstated.loading)
   const classes = useStyles();
 
   React.useEffect(() => {
-    console.log("allProducts : ", unstated.allProducts)
-    console.log("arrayAvailabilities : ", unstated.arrayAvailabilities)
-    console.log("arrayManufacturers : ", unstated.arrayManufacturers)
-    console.log("availabilities : ", unstated.availabilities)
+    console.log("allProducts : ", unstated.movies)
     // eslint-disable-next-line
   }, [])
 
-  // Search 
   React.useEffect(() => {
     setTotalPages(Math.ceil(product
-      .filter((item: IProduct) => item.name.toLowerCase().includes(unstated.search.toLowerCase()))
+      .filter((item: IMovie) => item.title.toLowerCase().includes(unstated.search.toLowerCase()))
       .length / pageSize));
   }, [unstated.search, product])
 
   // update if necessary
   React.useEffect(() => {
     setLoading(true);
-    if (unstated.jackets !== product) {
-      setProduct(unstated.jackets);
+    if (unstated.movies !== product) {
+      setProduct(unstated.movies);
     }
     setLoading(false);
     unstated.setLoading(false);
     // eslint-disable-next-line
-  }, [unstated.jackets, product])
+  }, [unstated.movies, product])
 
 
   return (
@@ -69,14 +57,15 @@ export default function Jackets() {
 
       {/* Header */}
       <div className="Pagination-header">
-        <h1>Jackets</h1>
+        <h1>Movies</h1>
+        <div>{unstated.movies.length} films</div>
       </div>
-      
+
       {/* Pagination */}
       <div className={classes.root}>
         <div className="Pagination-header">
           <Pagination count={Math.ceil(totalPages / pageSize)} color="primary" shape="rounded"
-            onChange={(e: object, page: number) => setPage(page)}/>
+            onChange={(e: object, page: number) => setPage(page)} />
         </div>
       </div>
 
@@ -84,11 +73,11 @@ export default function Jackets() {
       <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "space-evenly" }}>
 
         {/* Articles - mapping - filter */}
-        {unstated.jackets &&
+        {unstated.movies &&
           (product
-            .filter((item: IProduct) => item.name.toLowerCase().includes(unstated.search.toLowerCase()))
-            .slice((page - 1) * pageSize, page * pageSize).map((item: IProduct, i: number) =>
-              <MyCard item={item} key={item.id} name="jackets" />
+            .filter((item: IMovie) => item.title.toLowerCase().includes(unstated.search.toLowerCase()))
+            .slice((page - 1) * pageSize, page * pageSize).map((item: IMovie, i: number) =>
+              <MyCard item={item} key={i + "__movie"} />
             ))
         }
       </div>

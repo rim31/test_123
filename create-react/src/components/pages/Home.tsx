@@ -19,7 +19,7 @@ export default function Home() {
         <div className="overlay">
           <h2>WELCOME</h2>
           <p>
-            My e-commerce , simply visit and check different articles
+            My cinema
             </p>
         </div>
       </section>
@@ -28,27 +28,11 @@ export default function Home() {
 
     {/* Route - articles */}
       <div className="flex">
-        <Link to='/jackets'>
+        <Link to='/movies'>
           <figure className="photo red">
             <img src="./jackets.jpg" alt="jackets" />
             <figcaption>
-              <h2>Your  <span> Jackets</span></h2>
-            </figcaption>
-          </figure>
-        </Link>
-        <Link to='/shirts'>
-          <figure className="photo blue">
-            <img src="./shirts.jpg" alt="shirt" />
-            <figcaption>
-              <h2>Your  <span> Shirts</span></h2>
-            </figcaption>
-          </figure>
-        </Link>
-        <Link to='/accessories'>
-          <figure className="photo">
-            <img src="./accessories.jpg" alt="accessories" />
-            <figcaption>
-              <h2>Your <span> Accessories</span></h2>
+              <h2>Your  <span> movies</span></h2>
             </figcaption>
           </figure>
         </Link>
